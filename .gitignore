@@ -27,3 +27,4 @@ temp
 json
 .prettierrc
 .prettierignore
+.env

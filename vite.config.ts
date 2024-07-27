@@ -5,4 +5,8 @@ import react from '@vitejs/plugin-react-swc'
 export default defineConfig({
   plugins: [react()],
   base: "/Book-My-Mark/",
+  server: {
+    open: true,
+    port: 3000
+  }
 })
