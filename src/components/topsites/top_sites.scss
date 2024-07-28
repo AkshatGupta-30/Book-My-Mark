@@ -1,0 +1,47 @@
+@import "../../scss/colors";
+@import "../../scss/mixins";
+
+$img-pad: 0.75rem;
+$img-size: 2.25rem;
+$name-width: 4rem;
+$font-size: 0.9rem;
+
+.top-sites {
+    @include wh(70%);
+    @include flexcenter(row);
+    flex-wrap: wrap;
+    gap: 2rem
+}
+
+.site {
+    @include flexcenter;
+    gap: 0.5rem;
+    cursor: pointer;
+
+    .img-wrapper {
+        display: inline-flex;
+        padding: $img-pad;
+        background-color: rgba($color: shark('500'), $alpha: 0.4);
+        border-radius: 1.2rem;
+    }
+
+    img, .add-icon {
+        max-width: $img-size;
+        font-size: $img-size;
+        color: shark('200');
+        font-weight: 900;
+    }
+
+    .name {
+        max-width: $name-width;
+        color: shark('200');
+        font-weight: 900;
+        font-size: $font-size;
+    }
+
+    &:hover{
+        .img-wrapper {
+            background-color: rgba($color: shark('500'), $alpha: 0.6);
+        }
+    }
+}

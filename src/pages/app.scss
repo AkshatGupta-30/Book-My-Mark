@@ -3,7 +3,9 @@
 
 .app-page {
     @include wh();
+    @include flex(center, start, column);
     min-height: 100vh;
     background-color: shark('950');
     padding: 2rem;
+    gap: 2rem;
 }

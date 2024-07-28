@@ -23,6 +23,7 @@ const SearchBar = () => {
 
 	const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
 		if (e.key === "ArrowDown") {
+			e.preventDefault();
 			setHighlightedSuggestion((prevIndex) => {
 				const nextIndex = prevIndex + 1;
 				return nextIndex < autoSuggest.length ? nextIndex : 0;
