@@ -1,5 +1,8 @@
+@import "./scss/colors";
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background: shark('950');
 }
