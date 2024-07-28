@@ -1,6 +1,7 @@
 import { TbWorldSearch } from "react-icons/tb";
 import "./app.scss";
 import { FcGoogle } from "react-icons/fc";
+import { IoSearch } from "react-icons/io5";
 
 const App = () => (
 	<div className="app-page">
@@ -15,22 +16,13 @@ const App = () => (
 					<TbWorldSearch className="web-icon" />
 				</div>
 			</div>
-			<div className="auto-complete">
-				<ul className="internet-suggestions">
-					<li className="web-search"></li>
-					<li className="web-search"></li>
-					<li className="web-search"></li>
-					<li className="web-search"></li>
-					<li className="web-search"></li>
-				</ul>
-				<ul className="bookmark-suggestions">
-					<li className="bookmark"></li>
-					<li className="bookmark"></li>
-					<li className="bookmark"></li>
-					<li className="bookmark"></li>
-					<li className="bookmark"></li>
-				</ul>
-			</div>
+			<ul className="suggestion">
+				<li className="auto-complete"><IoSearch />Web Search</li>
+				<li className="auto-complete"><IoSearch />Web Search</li>
+				<li className="auto-complete"><IoSearch />Web Search</li>
+				<li className="auto-complete"><IoSearch />Web Search</li>
+				<li className="auto-complete"><IoSearch />Web Search</li>
+			</ul>
 		</div>
 	</div>
 );

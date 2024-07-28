@@ -4,12 +4,14 @@
 .app-page {
     @include wh();
     min-height: 100vh;
-    @include flex(start, center, row);
     background-color: shark('950');
     padding: 2rem;
 }
 
 .search-wrapper {
+    width: 100%;
+    @include flex(center, start, column);
+
     .search-box {
         display: flex;
         align-items: center;
@@ -88,6 +90,30 @@
             &::-webkit-search-results-button,
             &::-webkit-search-results-decoration {
                 display: none; // Hide the button
+            }
+        }
+    }
+
+    .suggestion {
+        @include wh(40%, 100%);
+        @include flex(start, start);
+        background-color: shark('800');
+        margin: 0.5rem auto;
+        padding: 0.1rem 0;
+        list-style: none;
+        gap: 0.4rem;
+
+        .auto-complete {
+            width: 100%;
+            display: inline-flex;
+            gap: 0.25rem;
+            font-size: 1.1rem;
+            color: shark('200');
+            padding: 0.2rem 1rem;
+            cursor: pointer;
+
+            &:hover{
+                background-color: shark('600');
             }
         }
     }
