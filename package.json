@@ -14,7 +14,8 @@
     "react-dom": "^18.3.1",
     "react-icons": "^5.2.1",
     "sass": "^1.77.8",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "suggestion": "^2.1.2"
   },
   "devDependencies": {
     "@types/react": "^18.3.3",
