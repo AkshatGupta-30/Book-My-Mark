@@ -1,0 +1,113 @@
+@import "../../scss/mixins";
+@import "../../scss/colors";
+
+.search-wrapper {
+    width: 100%;
+    @include flex(center, start, column);
+
+    .search-box {
+        display: flex;
+        align-items: center;
+        font-size: 2rem;
+        background-color: shark('900');
+        border-radius: 2rem;
+        width: 45rem;
+        min-width: 10rem;
+        max-width: 50rem;
+
+        .divider {
+            @include divider;
+        }
+
+        .google-icon {
+            margin: 0.75rem;
+            cursor: pointer;
+            line-height: 0;
+
+            &:active {
+                scale: 0.95;
+            }
+        }
+
+        .search-submit {
+            min-height: inherit;
+            @include wh(7rem, 3.5rem);
+            @include flexcenter;
+            border-top-right-radius: 2rem;
+            border-end-end-radius: 2rem;
+            background-color: shark('800');
+            color: shark('300');
+            cursor: pointer;
+
+            &:hover {
+                background-color: shark('700');
+                color: shark('100');
+            }
+
+            &:active {
+                .web-icon {
+                    scale: 0.95;
+                }
+            }
+        }
+
+        input[type='search'] {
+            display: inline-flex;
+            border: none;
+            outline: none;
+            background-color: transparent;
+            width: 100%;
+            font-size: 1.5rem;
+            caret-color: green;
+            padding: 0.75rem 0.75rem 0.75rem 0;
+
+            &::placeholder {
+                color: shark('400');
+            }
+
+            &:not(:focus):not(:placeholder-shown) {
+                color: shark('200');
+            }
+
+            &:focus {
+                color: shark('200');
+                caret-color: shark('100');
+
+                &::placeholder {
+                    color: shark('300');
+                }
+            }
+
+            &::-webkit-search-cancel-button,
+            &::-webkit-search-decoration,
+            &::-webkit-search-results-button,
+            &::-webkit-search-results-decoration {
+                display: none; // Hide the button
+            }
+        }
+    }
+
+    .suggestion {
+        @include wh(40%, 100%);
+        @include flex(start, start);
+        background-color: shark('800');
+        margin: 0.5rem auto;
+        padding: 0.1rem 0;
+        list-style: none;
+        gap: 0.4rem;
+
+        .auto-complete {
+            width: 100%;
+            display: inline-flex;
+            gap: 0.25rem;
+            font-size: 1.1rem;
+            color: shark('200');
+            padding: 0.2rem 1rem;
+            cursor: pointer;
+
+            &:hover{
+                background-color: shark('600');
+            }
+        }
+    }
+}
