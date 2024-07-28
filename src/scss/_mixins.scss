@@ -3,6 +3,13 @@
     height: $h;
 }
 
+@mixin flex($align: start, $justify: start, $fd: column) {
+    display: flex;
+    align-items: $align;
+    justify-content: $justify;
+    flex-direction: $fd;
+}
+
 @mixin flexcenter($fd: column) {
     display: flex;
     align-items: center;

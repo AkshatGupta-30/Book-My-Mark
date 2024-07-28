@@ -1,0 +1,10 @@
+@import "../scss/mixins";
+@import "../scss/colors";
+
+.app-page {
+    @include wh();
+    min-height: 100vh;
+    @include flex(start, center, row);
+    background-color: shark('950');
+    padding: 2rem;
+}
