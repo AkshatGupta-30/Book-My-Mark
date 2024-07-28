@@ -1,0 +1,11 @@
+@mixin wh($w: 100%, $h: 100%) {
+    width: $w;
+    height: $h;
+}
+
+@mixin flexcenter($fd: column) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: $fd;
+}
