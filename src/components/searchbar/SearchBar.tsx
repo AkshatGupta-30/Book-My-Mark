@@ -11,9 +11,12 @@ const SearchBar = () => {
 	const [highlightedSuggestion, setHighlightedSuggestion] = useState<number>(-1);
 
 	useEffect(() => {
-		const timeout = setTimeout(async () => {
-			setAutoSuggest(await autoCompleteSuggestions(query));
-		}, 300);
+		let timeout: number;
+		if (query.length) {
+			timeout = setTimeout(async () => {
+				setAutoSuggest(await autoCompleteSuggestions(query));
+			}, 300);
+		}
 
 		return () => clearTimeout(timeout);
 	}, [query]);
