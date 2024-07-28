@@ -11,6 +11,16 @@ class Site implements ISite {
 		this.favicon = params.url;
 	}
 
+	public static getAddSite(params: { title: string; url: string }): Site {
+		const regex = /^(?:https?:\/\/)?(?:www\.)?([^/]+)/;
+		const match = params.url.match(regex);
+		return new Site({
+			title: params.title,
+			url: params.url,
+			favicon: match ? match[1] : "",
+		});
+	}
+
 	public static empty(): Site {
 		return new Site({
 			title: "",

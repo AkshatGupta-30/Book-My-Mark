@@ -2,19 +2,25 @@ import { createContext, ReactNode, useState } from "react";
 import Site from "../models/Site";
 
 interface ContextInterface {
-	topSites: Site[];
+	sites: Site[];
+	addSite: (params: { title: string; url: string }) => void;
 }
 
 const defaultState = {
-	topSites: [],
+	sites: [],
+	addSite: () => {},
 } as ContextInterface;
 
 export const TopSiteContext = createContext<ContextInterface>(defaultState);
 
 const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
-	const [topSites, setTopSites] = useState<Site[]>(defaultState.topSites);
+	const [sites, setSites] = useState<Site[]>(defaultState.sites);
 
-	const contextValue: ContextInterface = { topSites };
+	function addSite(params: { title: string; url: string }) {
+		setSites([...sites, Site.getAddSite(params)]);
+	}
+
+	const contextValue: ContextInterface = { sites: sites, addSite };
 	return (
 		<TopSiteContext.Provider value={contextValue}>{children}</TopSiteContext.Provider>
 	);
