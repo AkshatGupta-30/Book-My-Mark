@@ -30,14 +30,26 @@ const SearchBar = () => {
 					onChange={(e) => setQuery(e.target.value)}
 				/>
 				<div className="divider"></div>
-				<div className="search-submit">
+				<div
+					className="search-submit"
+					style={{ pointerEvents: query.length ? "all" : "none" }}
+					onClick={() =>
+						(window.location.href = `https://www.google.co.in/search?q=${query}`)
+					}
+				>
 					<TbWorldSearch className="web-icon" />
 				</div>
 			</div>
 			{autoSuggest.length !== 0 && (
 				<ul className="suggestion">
 					{autoSuggest.slice(0, 5).map((suggestion: string, index: number) => (
-						<li key={index} className="auto-complete">
+						<li
+							key={index}
+							className="auto-complete"
+							onClick={() =>
+								(window.location.href = `https://www.google.co.in/search?q=${suggestion}`)
+							}
+						>
 							<IoSearch />
 							{suggestion}
 						</li>
