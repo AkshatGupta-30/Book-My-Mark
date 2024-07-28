@@ -105,8 +105,12 @@
             padding: 0.2rem 1rem;
             cursor: pointer;
 
-            &:hover{
+            &.highlighted {
                 background-color: shark('600');
+            }
+
+            &:hover{
+                background-color: shark('700');
             }
         }
     }

@@ -7,7 +7,7 @@ async function autoCompleteSuggestions(query) {
 				console.error(err);
 				reject([]);
 			} else {
-				resolve(suggestions);
+				resolve(suggestions.slice(0,5));
 			}
 		});
 	});
