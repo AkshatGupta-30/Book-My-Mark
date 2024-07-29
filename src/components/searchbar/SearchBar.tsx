@@ -3,6 +3,8 @@ import * as fc from "react-icons/fc";
 import { IoSearch } from "react-icons/io5";
 import { TbWorldSearch } from "react-icons/tb";
 import "./search_bar.scss";
+import axios, { AxiosError, AxiosResponse } from "axios";
+import process from "process";
 
 const SearchBar = () => {
 	const [query, setQuery] = useState<string>("");
@@ -13,7 +15,24 @@ const SearchBar = () => {
 		let timeout: NodeJS.Timeout;
 		if (query.length) {
 			timeout = setTimeout(async () => {
-				setAutoSuggest([]);
+				await axios
+					.get("https://auto-suggest-queries.p.rapidapi.com/suggestqueries", {
+						params: {
+							query,
+						},
+						headers: {
+							"x-rapidapi-key":
+								process.env.REACT_APP_RAPID_API_KEY ??
+								import.meta.env.VITE_RAPID_API_KEY,
+							"x-rapidapi-host": "auto-suggest-queries.p.rapidapi.com",
+						},
+					})
+					.then((response: AxiosResponse) => {
+						setAutoSuggest(response.data);
+					})
+					.catch((error: AxiosError) => {
+						console.log(error);
+					});
 			}, 300);
 		}
 
