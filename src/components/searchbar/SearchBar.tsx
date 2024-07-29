@@ -3,7 +3,6 @@ import { IoSearch } from "react-icons/io5";
 import { TbWorldSearch } from "react-icons/tb";
 import "./search_bar.scss";
 import React, { useEffect, useState } from "react";
-import autoCompleteSuggestions from "../../services/suggestion";
 
 const SearchBar = () => {
 	const [query, setQuery] = useState<string>("");
@@ -14,7 +13,7 @@ const SearchBar = () => {
 		let timeout: NodeJS.Timeout;
 		if (query.length) {
 			timeout = setTimeout(async () => {
-				setAutoSuggest(await autoCompleteSuggestions(query));
+				setAutoSuggest([]);
 			}, 300);
 		}
 

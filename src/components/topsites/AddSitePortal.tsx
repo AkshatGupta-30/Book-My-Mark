@@ -51,7 +51,7 @@ const AddSite = ({ closeModal }: { closeModal: () => void }) => {
 				</div>
 			</div>
 		</>,
-		document.querySelector(".modal-portal")!,
+		document.querySelector("#modal-portal")!,
 	);
 };
 

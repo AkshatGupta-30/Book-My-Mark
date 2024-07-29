@@ -1,6 +1,12 @@
 @import "../scss/mixins";
 @import "../scss/colors";
 
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 .app-page {
     @include wh();
     @include flex(center, start, column);

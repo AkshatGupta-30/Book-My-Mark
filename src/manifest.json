@@ -8,8 +8,11 @@
         "128": "assets/images/favicon1024.png"
     },
     "action": {
-        "default_title": "Boom My Mark",
+        "default_title": "Book My Mark",
         "default_popup": "popup.html"
+    },
+    "chrome_url_overrides": {
+        "newtab": "newtab.html"
     },
     "options_page": "options.html"
 }
