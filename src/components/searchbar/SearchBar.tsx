@@ -30,7 +30,8 @@ const SearchBar = () => {
 					.then((response: AxiosResponse) => {
 						setAutoSuggest(response.data);
 					})
-					.catch((_: AxiosError) => {
+					.catch((error: AxiosError) => {
+						console.log(error)
 						setAutoSuggest([]);
 					});
 			}, 300);
