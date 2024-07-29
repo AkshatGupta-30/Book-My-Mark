@@ -1,8 +1,8 @@
-const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
-const HtmlPlugin = require("html-webpack-plugin");
+import CopyPlugin from "copy-webpack-plugin";
+import path from "path";
+import HtmlWebpackPlugin from "html-webpack-plugin";
 
-module.exports = {
+export default {
 	entry: {
 		popup: path.resolve("./src/addons/popup.tsx"),
 		options: path.resolve("./src/addons/options.tsx"),
@@ -56,7 +56,7 @@ module.exports = {
 function getHtmlPlugin(chunks) {
 	return chunks.map(
 		(chunk) =>
-			new HtmlPlugin({
+			new HtmlWebpackPlugin({
 				title: chunk === "newtab" ? "New Tab" : "Book My mark",
 				filename: `${chunk}.html`,
 				chunks: [chunk],
