@@ -6,7 +6,7 @@ import "./search_bar.scss";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import process from "process";
 
-const KEY = process.env.REACT_APP_RAPID_API_KEY ?? import.meta.env.VITE_RAPID_API_KEY;
+const KEY = process.env.REACT_APP_RAPID_API_KEY ?? process.env.VITE_RAPID_API_KEY ?? import.meta.env.VITE_RAPID_API_KEY;
 
 const SearchBar = () => {
 	const [query, setQuery] = useState<string>("");
@@ -14,6 +14,7 @@ const SearchBar = () => {
 	const [highlightedSuggestion, setHighlightedSuggestion] = useState<number>(-1);
 
 	useEffect(() => {
+		console.log(KEY)
 		let timeout: NodeJS.Timeout;
 		if (query.length) {
 			timeout = setTimeout(async () => {
