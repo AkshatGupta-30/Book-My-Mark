@@ -1,0 +1,13 @@
+{
+    "manifest_version": 3,
+    "name": "Book My Mark",
+    "version": "1.0.0",
+    "icons": {
+        "48": "assets/svgs/favicon.svg",
+        "128": "assets/svgs/favicon.svg"
+    },
+    "action": {
+        "default_title": "Boom My Mark",
+        "default_popup": "popup.html"
+    }
+}

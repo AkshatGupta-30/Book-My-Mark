@@ -1,7 +1,7 @@
 import { createPortal } from "react-dom";
 import "./add_site.scss";
 import { MdClose } from "react-icons/md";
-import { useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { TopSiteContext } from "../../context/TopSiteContext";
 
 const AddSite = ({ closeModal }: { closeModal: () => void }) => {

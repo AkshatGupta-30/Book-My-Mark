@@ -2,7 +2,7 @@ import { useContext, useState } from "react";
 import { IoIosAdd } from "react-icons/io";
 import "./top_sites.scss";
 import AddSite from "./AddSitePortal";
-import { TopSiteContext } from "../../context/TopSiteContext";
+import React, { TopSiteContext } from "../../context/TopSiteContext";
 import TopSite from "../../models/Site";
 
 const TopSites = () => {
