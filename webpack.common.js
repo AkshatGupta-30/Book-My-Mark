@@ -1,8 +1,8 @@
-import CopyPlugin from "copy-webpack-plugin";
-import path from "path";
-import HtmlWebpackPlugin from "html-webpack-plugin";
+const CopyPlugin = require("copy-webpack-plugin");
+const path = require("path");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
 
-export default {
+module.exports = {
 	entry: {
 		popup: path.resolve("./src/addons/popup.tsx"),
 		options: path.resolve("./src/addons/options.tsx"),
