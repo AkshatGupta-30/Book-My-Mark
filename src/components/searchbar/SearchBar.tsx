@@ -6,6 +6,8 @@ import "./search_bar.scss";
 import axios, { AxiosError, AxiosResponse } from "axios";
 import process from "process";
 
+const KEY = process.env.REACT_APP_RAPID_API_KEY ?? import.meta.env.VITE_RAPID_API_KEY;
+
 const SearchBar = () => {
 	const [query, setQuery] = useState<string>("");
 	const [autoSuggest, setAutoSuggest] = useState<string[]>([]);
@@ -21,9 +23,7 @@ const SearchBar = () => {
 							query,
 						},
 						headers: {
-							"x-rapidapi-key":
-								process.env.REACT_APP_RAPID_API_KEY ??
-								import.meta.env.VITE_RAPID_API_KEY,
+							"x-rapidapi-key": KEY,
 							"x-rapidapi-host": "auto-suggest-queries.p.rapidapi.com",
 						},
 					})
