@@ -1,8 +1,8 @@
+import React, { useEffect, useState } from "react";
 import * as fc from "react-icons/fc";
 import { IoSearch } from "react-icons/io5";
 import { TbWorldSearch } from "react-icons/tb";
 import "./search_bar.scss";
-import React, { useEffect, useState } from "react";
 
 const SearchBar = () => {
 	const [query, setQuery] = useState<string>("");
