@@ -5,6 +5,7 @@ const HtmlPlugin = require("html-webpack-plugin");
 module.exports = {
     entry: {
         popup: path.resolve("./src/addons/popup.tsx"),
+        options: path.resolve("./src/addons/options.tsx")
     },
     module: {
         rules: [
@@ -36,7 +37,7 @@ module.exports = {
                 },
             ],
         }),
-        ...getHtmlPlugin(["popup"]),
+        ...getHtmlPlugin(["popup", "options"]),
     ],
     resolve: {
         extensions: [".tsx", ".ts", ".js"],
