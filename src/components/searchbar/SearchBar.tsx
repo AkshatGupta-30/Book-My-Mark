@@ -17,9 +17,6 @@ const SearchBar = () => {
 	const [highlightedSuggestion, setHighlightedSuggestion] = useState<number>(-1);
 
 	useEffect(() => {
-		console.log(process.env.REACT_APP_RAPID_API_KEY);
-		console.log(process.env.VITE_RAPID_API_KEY);
-
 		let timeout: NodeJS.Timeout;
 		if (query.length) {
 			timeout = setTimeout(async () => {
