@@ -97,7 +97,7 @@ const SearchBar = () => {
 							key={index}
 							className={`auto-complete ${
 								highlightedSuggestion === index ? "highlighted" : ""
-							}`} // Add class for highlighted suggestion
+							}`}
 							onClick={() =>
 								(window.location.href = `https://www.google.co.in/search?q=${suggestion}`)
 							}

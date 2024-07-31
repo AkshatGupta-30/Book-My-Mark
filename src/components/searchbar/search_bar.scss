@@ -4,6 +4,7 @@
 .search-wrapper {
     width: 100%;
     @include flex(center, start, column);
+    position: relative;
 
     .search-box {
         display: flex;
@@ -88,7 +89,10 @@
     }
 
     .suggestion {
-        @include wh(40%, 100%);
+        position: absolute;
+        top: 100%;
+        z-index: 1;
+        @include wh(40%, fit-content);
         @include flex(start, start);
         background-color: shark('800');
         margin: 0.5rem auto;
