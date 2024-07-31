@@ -20,7 +20,7 @@ const defaultContextMenu = {
 
 const TopSites = () => {
 	const { sites } = useContext(TopSiteContext);
-	const contextMenuRef = useRef<HTMLDivElement>(null);
+	const contextMenuRef = useRef<HTMLUListElement>(null);
 	const addSiteRef = useRef<HTMLDivElement>(null);
 	const topSitesRef = useRef<HTMLDivElement>(null);
 	const [showAddSiteModal, setShowAddSiteModal] = useState<boolean>(false);
@@ -62,12 +62,9 @@ const TopSites = () => {
 
 		function contextHandler(ev: Event): void {
 			const target: HTMLElement = ev.target as HTMLElement;
-			//* - Check if the siteRef.current exists and is not a descendant of the clicked target, and if the contextMenuRef.current exists and is not a descendant of the clicked target
 			if (
 				//* - If context menu is active
 				contextMenuRef.current &&
-				//* - If element clicked is other than context menu
-				!contextMenuRef.current.contains(target) &&
 				//* - If element(parent - top-sites) clicked does not contains className site
 				!target.classList.contains("site") &&
 				//* - If toSiteRef exists

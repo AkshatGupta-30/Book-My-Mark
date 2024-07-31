@@ -8,12 +8,27 @@
     position: fixed;
     z-index: 5;
     background-color: shark('800');
-    @include wh(300px, 100px);
+    padding: 0.15rem 0;
+    border-radius: 0.5rem;
+    list-style: none;
 
     &.active {
         visibility: visible;
         opacity: 1;
         display: flex;
         flex-direction: column;
+    }
+}
+
+.menu-fields {
+    padding: 0.5rem 3rem 0.5rem 1rem;
+    display: inline-flex;
+    gap: 1rem;
+    color: shark('200');
+    font-weight: 700;
+    cursor: pointer;
+
+    &:hover {
+        background-color: shark('600');
     }
 }
