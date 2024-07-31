@@ -1,10 +1,10 @@
 import React, { MouseEvent, useContext, useEffect, useRef, useState } from "react";
 import { TopSiteContext } from "../../context/TopSiteContext";
 import { IoIosAdd } from "react-icons/io";
-import AddSite from "./AddSitePortal";
+import AddSite from "../add_site_modal/AddSiteModal";
 import TopSite from "../../models/Site";
 import "./top_sites.scss";
-import ContextMenu from "./ContextMenu";
+import ContextMenu from "../context_menu/ContextMenu";
 
 interface ContextMenuInterface {
 	x: number;
