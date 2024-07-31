@@ -1,5 +1,6 @@
 import React, { createContext, ReactNode, useState } from "react";
 import Site from "../models/Site";
+import topSites from "../constants/topsites";
 
 interface ContextInterface {
 	sites: Site[];
@@ -7,7 +8,8 @@ interface ContextInterface {
 }
 
 const defaultState = {
-	sites: [],
+	//! - To be removed
+	sites: topSites,
 	addSite: () => {},
 } as ContextInterface;
 
