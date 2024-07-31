@@ -1,6 +1,5 @@
-import React, { createContext, ReactNode, useState } from "react";
+import React, { createContext, ReactNode, useEffect, useState } from "react";
 import Site from "../models/Site";
-import topSites from "../constants/topsites";
 
 interface ContextInterface {
 	sites: Site[];
@@ -8,8 +7,7 @@ interface ContextInterface {
 }
 
 const defaultState = {
-	//! - To be removed
-	sites: topSites,
+	sites: [],
 	addSite: () => {},
 } as ContextInterface;
 
@@ -18,8 +16,17 @@ export const TopSiteContext = createContext<ContextInterface>(defaultState);
 const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 	const [sites, setSites] = useState<Site[]>(defaultState.sites);
 
+	useEffect(() => {
+		if (localStorage.getItem("topSites") !== null)
+			setSites(Site.fromStorage(localStorage.getItem("topSites")!));
+	}, []);
+
 	function addSite(params: { title: string; url: string }) {
 		setSites([...sites, Site.getAddSite(params)]);
+		localStorage.setItem(
+			"topSites",
+			JSON.stringify([...sites, Site.getAddSite(params)]),
+		);
 	}
 
 	const contextValue: ContextInterface = { sites: sites, addSite };

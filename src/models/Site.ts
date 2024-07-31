@@ -21,6 +21,11 @@ class Site implements ISite {
 		});
 	}
 
+	public static fromStorage(params: string): Site[] {
+		const sites: ISite[] = JSON.parse(params)
+		return sites.map((param: ISite) => Site.getAddSite(param));
+	}
+
 	public static empty(): Site {
 		return new Site({
 			title: "",

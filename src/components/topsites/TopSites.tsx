@@ -29,7 +29,6 @@ const TopSites = () => {
 
 	const closeAddSiteModal = () => {
 		setShowAddSiteModal(false);
-		console.log("Close Model");
 	};
 
 	const handleOnContextMenu = (ev: MouseEvent) => {
