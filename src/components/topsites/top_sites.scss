@@ -17,6 +17,7 @@ $font-size: 0.9rem;
     @include flexcenter;
     gap: 0.5rem;
     cursor: pointer;
+    text-decoration: none;
 
     .img-wrapper {
         display: inline-flex;
@@ -37,6 +38,11 @@ $font-size: 0.9rem;
         color: shark('200');
         font-weight: 900;
         font-size: $font-size;
+        text-align: center;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        width: 100%;
     }
 
     &:hover{

@@ -1,0 +1,19 @@
+@import "../../scss/colors";
+@import "../../scss/mixins";
+
+.context-menu {
+    display: none;
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 5;
+    background-color: shark('800');
+    @include wh(300px, 100px);
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        display: flex;
+        flex-direction: column;
+    }
+}
