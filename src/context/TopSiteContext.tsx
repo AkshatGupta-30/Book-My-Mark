@@ -11,20 +11,18 @@ import Site from "../models/Site";
 interface IContextMenuInterface {
 	x: number;
 	y: number;
-	index: number;
 	toggled: boolean;
 }
 
 const defaultContextMenu = {
 	x: 0,
 	y: 0,
-	index: 0,
 	toggled: false,
 } as IContextMenuInterface;
 
 interface IContextInterface {
 	sites: Site[];
-	addSite: (params: { title: string; url: string }) => void;
+	addUpdateSite: (params: { title: string; url: string }, index?: number) => void;
 	contextMenu: IContextMenuInterface;
 	setContextMenu: Dispatch<SetStateAction<IContextMenuInterface>>;
 	defaultContextMenu: IContextMenuInterface;
@@ -33,7 +31,7 @@ interface IContextInterface {
 
 const defaultState = {
 	sites: [],
-	addSite: () => {},
+	addUpdateSite: () => {},
 	contextMenu: defaultContextMenu,
 	setContextMenu: () => {},
 	defaultContextMenu: defaultContextMenu,
@@ -52,12 +50,18 @@ const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 			setSites(Site.fromStorage(localStorage.getItem("topSites")!));
 	}, []);
 
-	function addSite(params: { title: string; url: string }) {
-		setSites([...sites, Site.getAddSite(params)]);
-		localStorage.setItem(
-			"topSites",
-			JSON.stringify([...sites, Site.getAddSite(params)]),
-		);
+	function addUpdateSite(params: { title: string; url: string }, index?: number) {
+		setSites((prevSites) => {
+			if (index !== undefined) {
+				var updatedSites = prevSites.map((site, i) =>
+					i === index ? Site.getAddSite(params) : site,
+				);
+			} else {
+				var updatedSites = [...prevSites, Site.getAddSite(params)];
+			}
+			localStorage.setItem("topSites", JSON.stringify(updatedSites));
+			return updatedSites;
+		});
 	}
 
 	function removeSite(index: number) {
@@ -72,7 +76,7 @@ const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 
 	const contextValue: IContextInterface = {
 		sites,
-		addSite,
+		addUpdateSite,
 		contextMenu,
 		setContextMenu,
 		defaultContextMenu,

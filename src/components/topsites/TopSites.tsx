@@ -1,7 +1,7 @@
 import React, { MouseEvent, useContext, useEffect, useRef, useState } from "react";
 import { TopSiteContext } from "../../context/TopSiteContext";
 import { IoIosAdd } from "react-icons/io";
-import AddSite from "../add_site_modal/AddSiteModal";
+import AddUpdateSite from "../add_site_modal/AddEditSiteModal";
 import TopSite from "../../models/Site";
 import "./top_sites.scss";
 import ContextMenu from "../context_menu/ContextMenu";
@@ -12,23 +12,25 @@ const TopSites = () => {
 	const addSiteRef = useRef<HTMLDivElement>(null);
 	const topSitesRef = useRef<HTMLDivElement>(null);
 	const [showAddSiteModal, setShowAddSiteModal] = useState<boolean>(false);
+	const [index, setIndex] = useState<number>(-1);
 
 	const closeAddSiteModal = () => {
 		setShowAddSiteModal(false);
 	};
 
-	const handleOnContextMenu = (ev: MouseEvent, index: number) => {
+	const handleOnContextMenu = (ev: MouseEvent, i: number) => {
 		ev.preventDefault();
 		const contextMenuAttr = contextMenuRef.current?.getBoundingClientRect();
 		const isLeft = ev.clientX < window?.innerWidth;
 
-		if (contextMenuAttr)
+		if (contextMenuAttr) {
+			setIndex(i);
 			setContextMenu({
 				x: isLeft ? ev.clientX : ev.clientX - contextMenuAttr.width,
 				y: ev.clientY,
-				index: index,
 				toggled: true,
 			});
+		}
 	};
 
 	const handleOnClick = () => {
@@ -99,8 +101,8 @@ const TopSites = () => {
 					<div className="name">Add Site</div>
 				</div>
 			)}
-			{showAddSiteModal && <AddSite closeModal={closeAddSiteModal} />}
-			<ContextMenu contextRef={contextMenuRef} />
+			{showAddSiteModal && <AddUpdateSite closeModal={closeAddSiteModal} />}
+			<ContextMenu contextRef={contextMenuRef} index={index} />
 		</div>
 	);
 };
