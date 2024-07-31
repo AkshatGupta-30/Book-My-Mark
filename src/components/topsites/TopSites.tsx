@@ -6,32 +6,18 @@ import TopSite from "../../models/Site";
 import "./top_sites.scss";
 import ContextMenu from "../context_menu/ContextMenu";
 
-interface ContextMenuInterface {
-	x: number;
-	y: number;
-	toggled: boolean;
-}
-
-const defaultContextMenu = {
-	x: 0,
-	y: 0,
-	toggled: false,
-} as ContextMenuInterface;
-
 const TopSites = () => {
-	const { sites } = useContext(TopSiteContext);
+	const { sites, setContextMenu, defaultContextMenu } = useContext(TopSiteContext);
 	const contextMenuRef = useRef<HTMLUListElement>(null);
 	const addSiteRef = useRef<HTMLDivElement>(null);
 	const topSitesRef = useRef<HTMLDivElement>(null);
 	const [showAddSiteModal, setShowAddSiteModal] = useState<boolean>(false);
-	const [contextMenu, setContextMenu] =
-		useState<ContextMenuInterface>(defaultContextMenu);
 
 	const closeAddSiteModal = () => {
 		setShowAddSiteModal(false);
 	};
 
-	const handleOnContextMenu = (ev: MouseEvent) => {
+	const handleOnContextMenu = (ev: MouseEvent, index: number) => {
 		ev.preventDefault();
 		const contextMenuAttr = contextMenuRef.current?.getBoundingClientRect();
 		const isLeft = ev.clientX < window?.innerWidth;
@@ -40,6 +26,7 @@ const TopSites = () => {
 			setContextMenu({
 				x: isLeft ? ev.clientX : ev.clientX - contextMenuAttr.width,
 				y: ev.clientY,
+				index: index,
 				toggled: true,
 			});
 	};
@@ -55,9 +42,8 @@ const TopSites = () => {
 			if (
 				contextMenuRef.current &&
 				!contextMenuRef.current.contains(ev.target as Node)
-			) {
+			)
 				setContextMenu(defaultContextMenu);
-			}
 		}
 
 		function contextHandler(ev: Event): void {
@@ -71,9 +57,8 @@ const TopSites = () => {
 				topSitesRef.current &&
 				//* - If element clicked has descendant className site or add site button clicked
 				(target.querySelector(".site") || addSiteRef.current?.contains(target))
-			) {
+			)
 				setContextMenu(defaultContextMenu);
-			}
 		}
 
 		document.addEventListener("click", clickHandler);
@@ -92,7 +77,7 @@ const TopSites = () => {
 					key={index}
 					href={`http://${site.url}`}
 					className="site"
-					onContextMenu={handleOnContextMenu}
+					onContextMenu={(ev) => handleOnContextMenu(ev, index)}
 				>
 					<div className="img-wrapper">
 						<img
@@ -115,12 +100,7 @@ const TopSites = () => {
 				</div>
 			)}
 			{showAddSiteModal && <AddSite closeModal={closeAddSiteModal} />}
-			<ContextMenu
-				contextMenuRef={contextMenuRef}
-				isToggled={contextMenu.toggled}
-				left={contextMenu.x}
-				top={contextMenu.y}
-			/>
+			<ContextMenu contextRef={contextMenuRef} />
 		</div>
 	);
 };

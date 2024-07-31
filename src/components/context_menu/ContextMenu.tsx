@@ -1,29 +1,22 @@
-import React, { RefObject } from "react";
+import React, { RefObject, useContext } from "react";
 import "./context_menu.scss";
 import { MdDeleteForever, MdEditSquare } from "react-icons/md";
+import { TopSiteContext } from "../../context/TopSiteContext";
 
-const ContextMenu = ({
-	contextMenuRef,
-	isToggled,
-	left,
-	top,
-}: {
-	contextMenuRef: RefObject<HTMLUListElement>;
-	isToggled: boolean;
-	left: number;
-	top: number;
-}) => {
+const ContextMenu = ({ contextRef }: { contextRef: RefObject<HTMLUListElement> }) => {
+	const { contextMenu, removeSite } = useContext(TopSiteContext);
+
 	return (
 		<ul
-			ref={contextMenuRef}
-			style={{ top: `${top + 2}px`, left: `${left + 2}px` }}
-			className={`context-menu ${isToggled ? "active" : null}`}
+			ref={contextRef}
+			style={{ top: `${contextMenu.y + 2}px`, left: `${contextMenu.x + 2}px` }}
+			className={`context-menu ${contextMenu.toggled ? "active" : null}`}
 		>
 			<li className="menu-fields">
 				<MdEditSquare className="field-icon" />
 				<span className="field-label">Edit Site</span>
 			</li>
-			<li className="menu-fields">
+			<li className="menu-fields" onClick={() => removeSite(contextMenu.index)}>
 				<MdDeleteForever className="field-icon" />
 				<span className="field-label">Remove</span>
 			</li>
