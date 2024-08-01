@@ -1,0 +1,22 @@
+@import "../../scss/colors";
+@import "../../scss/mixins";
+
+.floating-description {
+    visibility: hidden;
+    opacity: 0;
+    position: fixed;
+    z-index: 5;
+    background-color: shark('800');
+    color: shark('200');
+    border-radius: 0.25rem;
+    padding: 10px;
+
+    &.active {
+        visibility: visible;
+        opacity: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+    }
+}

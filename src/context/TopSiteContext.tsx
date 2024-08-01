@@ -8,33 +8,37 @@ import React, {
 } from "react";
 import Site from "../models/Site";
 
-interface IContextMenuInterface {
+interface ISecondaryItemInterface {
 	x: number;
 	y: number;
 	toggled: boolean;
 }
 
-const defaultContextMenu = {
+const defaultSecondaryItem = {
 	x: 0,
 	y: 0,
 	toggled: false,
-} as IContextMenuInterface;
+} as ISecondaryItemInterface;
 
 interface IContextInterface {
 	sites: Site[];
 	addUpdateSite: (params: { title: string; url: string }, index?: number) => void;
-	contextMenu: IContextMenuInterface;
-	setContextMenu: Dispatch<SetStateAction<IContextMenuInterface>>;
-	defaultContextMenu: IContextMenuInterface;
+	contextMenu: ISecondaryItemInterface;
+	setContextMenu: Dispatch<SetStateAction<ISecondaryItemInterface>>;
+	floatCard: ISecondaryItemInterface;
+	setFloatCard: Dispatch<SetStateAction<ISecondaryItemInterface>>;
+	defaultSecondaryItem: ISecondaryItemInterface;
 	removeSite: (i: number) => void;
 }
 
 const defaultState = {
 	sites: [],
 	addUpdateSite: () => {},
-	contextMenu: defaultContextMenu,
+	contextMenu: defaultSecondaryItem,
 	setContextMenu: () => {},
-	defaultContextMenu: defaultContextMenu,
+	floatCard: defaultSecondaryItem,
+	setFloatCard: () => {},
+	defaultSecondaryItem: defaultSecondaryItem,
 	removeSite: () => {},
 } as IContextInterface;
 
@@ -43,7 +47,9 @@ export const TopSiteContext = createContext<IContextInterface>(defaultState);
 const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 	const [sites, setSites] = useState<Site[]>(defaultState.sites);
 	const [contextMenu, setContextMenu] =
-		useState<IContextMenuInterface>(defaultContextMenu);
+		useState<ISecondaryItemInterface>(defaultSecondaryItem);
+	const [floatCard, setFloatCard] =
+		useState<ISecondaryItemInterface>(defaultSecondaryItem);
 
 	useEffect(() => {
 		if (localStorage.getItem("topSites") !== null)
@@ -71,7 +77,7 @@ const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 			// localStorage.setItem("topSites", JSON.stringify(updatedSites)); //! Remove comments
 			return updatedSites;
 		});
-		setContextMenu(defaultContextMenu);
+		setContextMenu(defaultSecondaryItem);
 	}
 
 	const contextValue: IContextInterface = {
@@ -79,7 +85,9 @@ const TopSiteContextProvider = ({ children }: { children?: ReactNode }) => {
 		addUpdateSite,
 		contextMenu,
 		setContextMenu,
-		defaultContextMenu,
+		floatCard,
+		setFloatCard,
+		defaultSecondaryItem,
 		removeSite,
 	};
 	return (
