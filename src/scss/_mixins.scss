@@ -20,7 +20,7 @@
 }
 
 @mixin divider($h: 100%) {
-    color: shark('100');
+    color: secColor('100');
     height: $h;
     width: 2px;
 }

@@ -22,20 +22,20 @@ $font-size: 0.9rem;
     .img-wrapper {
         display: inline-flex;
         padding: $img-pad;
-        background-color: rgba($color: shark('500'), $alpha: 0.4);
+        background-color: rgba($color: secColor('500'), $alpha: 0.4);
         border-radius: 1.2rem;
     }
 
     img, .add-icon {
         max-width: $img-size;
         font-size: $img-size;
-        color: shark('200');
+        color: secColor('200');
         font-weight: 900;
     }
 
     .name {
         max-width: $name-width;
-        color: shark('200');
+        color: secColor('200');
         font-weight: 900;
         font-size: $font-size;
         text-align: center;
@@ -47,7 +47,7 @@ $font-size: 0.9rem;
 
     &:hover{
         .img-wrapper {
-            background-color: rgba($color: shark('500'), $alpha: 0.6);
+            background-color: rgba($color: secColor('500'), $alpha: 0.6);
         }
     }
 }

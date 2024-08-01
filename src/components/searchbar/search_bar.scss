@@ -10,7 +10,7 @@
         display: flex;
         align-items: center;
         font-size: 2rem;
-        background-color: shark('900');
+        background-color: secColor('900');
         border-radius: 2rem;
         width: 45rem;
         min-width: 10rem;
@@ -36,13 +36,13 @@
             @include flexcenter;
             border-top-right-radius: 2rem;
             border-end-end-radius: 2rem;
-            background-color: shark('800');
-            color: shark('300');
+            background-color: secColor('800');
+            color: secColor('300');
             cursor: pointer;
 
             &:hover {
-                background-color: shark('700');
-                color: shark('100');
+                background-color: secColor('700');
+                color: secColor('100');
             }
 
             &:active {
@@ -63,19 +63,19 @@
             padding: 0.75rem 0.75rem 0.75rem 0;
 
             &::placeholder {
-                color: shark('400');
+                color: secColor('400');
             }
 
             &:not(:focus):not(:placeholder-shown) {
-                color: shark('200');
+                color: secColor('200');
             }
 
             &:focus {
-                color: shark('200');
-                caret-color: shark('100');
+                color: secColor('200');
+                caret-color: secColor('100');
 
                 &::placeholder {
-                    color: shark('300');
+                    color: secColor('300');
                 }
             }
 
@@ -94,7 +94,7 @@
         z-index: 1;
         @include wh(40%, fit-content);
         @include flex(start, start);
-        background-color: shark('800');
+        background-color: secColor('800');
         margin: 0.5rem auto;
         padding: 0.1rem 0;
         list-style: none;
@@ -105,16 +105,16 @@
             display: inline-flex;
             gap: 0.25rem;
             font-size: 1.1rem;
-            color: shark('200');
+            color: secColor('200');
             padding: 0.2rem 1rem;
             cursor: pointer;
 
             &.highlighted {
-                background-color: shark('600');
+                background-color: secColor('600');
             }
 
             &:hover{
-                background-color: shark('700');
+                background-color: secColor('700');
             }
         }
     }

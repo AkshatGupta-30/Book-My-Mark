@@ -1,4 +1,4 @@
-$shark: (
+$secondary: (
   '50': #f6f7f9,
   '100': #eceef2,
   '200': #d5d9e2,
@@ -12,6 +12,6 @@ $shark: (
   '950': #262a33
 );
 
-@function shark($shade) {
-  @return map-get($shark, $shade);
+@function secColor($shade) {
+  @return map-get($secondary, $shade);
 }
